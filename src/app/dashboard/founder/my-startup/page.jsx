@@ -15,7 +15,7 @@ const MyStartup = () => {
     const founderName = session?.user?.name
     const userEmail = session?.user?.email
 
-    
+
 
     const { data, isLoading, refetch } = useQuery({
         queryKey: ["my-startup"],
@@ -296,8 +296,103 @@ const MyStartup = () => {
                             </div>
 
                         </div>
+                        <div className="p-6">
+                            <div className="rounded-3xl overflow-hidden border border-cyan-500/20 bg-gradient-to-br from-[#00142c] via-[#082b47] to-[#00142c] shadow-2xl">
 
-                        <div className='p-4'>
+                                {/* Top Accent */}
+                                <div className="h-1.5 w-full bg-gradient-to-r from-[#00d3f2] via-cyan-300 to-[#ff7904]" />
+
+                                <div className="p-6">
+
+                                    <div className="flex flex-col lg:flex-row gap-6">
+
+                                        {/* Startup Logo */}
+                                        <div className="flex justify-center lg:justify-start">
+                                            <div className="relative w-32 h-32 rounded-3xl overflow-hidden border-[3px] border-[#00d3f2] shadow-xl shrink-0">
+                                                <Image
+                                                    src={data.image}
+                                                    alt="image"
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Details */}
+                                        <div className="flex-1">
+
+                                            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
+
+                                                <div>
+                                                    <h1 className="text-3xl font-bold text-white">
+                                                        {data.name}
+                                                    </h1>
+
+                                                    <p className="text-gray-400 mt-3 leading-relaxed max-w-2xl">
+                                                        {data.description}
+                                                    </p>
+                                                </div>
+
+                                                <span
+                                                    className={`px-4 py-2 rounded-full text-sm font-semibold capitalize
+                            ${data.status === "approved"
+                                                            ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                                                            : data.status === "pending"
+                                                                ? "bg-[#ff7904]/20 text-[#ffb067] border border-[#ff7904]/40"
+                                                                : "bg-red-500/20 text-red-400 border border-red-500/30"
+                                                        }`}
+                                                >
+                                                    {data.status}
+                                                </span>
+
+                                            </div>
+
+                                            {/* Tags */}
+
+                                            <div className="flex flex-wrap gap-3 mt-6">
+
+                                                <div className="px-4 py-2 rounded-xl bg-[#00d3f2]/15 border border-[#00d3f2]/30 text-[#00d3f2] font-medium text-sm">
+                                                    {data.industry}
+                                                </div>
+
+                                                <div className="px-4 py-2 rounded-xl bg-[#ff7904]/15 border border-[#ff7904]/30 text-[#ff7904] font-medium text-sm">
+                                                    {data.fundingStage}
+                                                </div>
+
+                                            </div>
+
+                                            {/* Buttons */}
+
+                                            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+
+                                                <button
+                                                    onClick={() => modalElement.current.showModal()}
+                                                    className="btn border-0 rounded-xl bg-[#00d3f2] hover:bg-cyan-400 text-[#00142c] font-bold shadow-lg transition-all duration-300 hover:scale-[1.03]"
+                                                >
+                                                    <SquarePen size={18} />
+                                                    Edit Startup
+                                                </button>
+
+                                                <button
+                                                    onClick={handleDelete}
+                                                    className="btn border-0 rounded-xl bg-[#ff7904] hover:bg-orange-500 text-white font-bold shadow-lg transition-all duration-300 hover:scale-[1.03]"
+                                                >
+                                                    <Trash2 size={18} />
+                                                    Delete Startup
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {/* <div className='p-4'>
                             <div>
 
                                 {
@@ -337,7 +432,7 @@ const MyStartup = () => {
                                     <button onClick={handleDelete} className='btn p-3 border bg-red-400 border-red-600 shadow-none '>Delete <Trash2 size={16} /></button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
 
                     </div>
@@ -426,25 +521,6 @@ const MyStartup = () => {
                             <button type='submit' className="btn btn-neutral mt-4 w-full">Save Changes</button>
                         </fieldset>
                     </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 </div>
 

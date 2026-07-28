@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Rocket, CircleGauge, LayoutDashboard, ShieldPlus, LogOut, CircleGaugeIcon } from "lucide-react";
@@ -23,9 +22,6 @@ const Navbar = () => {
     if (pathname.includes('dashboard')) {
         return null
     }
-
-
-
 
     const navLinks = [
         {
@@ -71,7 +67,6 @@ const Navbar = () => {
 
             }
         });
-
 
     }
 

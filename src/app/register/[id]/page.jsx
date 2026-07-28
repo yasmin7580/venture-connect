@@ -23,12 +23,8 @@ export default function Register() {
     const handleImage = (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
-        // formData.append("name of Data", theData)
         formData.append("image", file)
-        // formData.get("name of Data")
         setImage(formData)
-
-
         const url = URL.createObjectURL(formData.get("image")) // convert to url. its need obj
         setImageUrl(url)
     }
@@ -41,8 +37,6 @@ export default function Register() {
         const form = e.target
         const formData = new FormData(form) // entries
         formData.delete("image")
-
-
         const { data } = await axios.post(`https://api.imgbb.com/1/upload?key=46cef828a7aeed48196e6dc399220d34`, image)
         console.log(data.data.url)
         formData.append("image", data.data.url)
