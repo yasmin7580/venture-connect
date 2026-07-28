@@ -21,7 +21,7 @@ const MyStartup = () => {
         queryKey: ["my-startup"],
         queryFn: async () => {
             const result = await axios.get(`https://venture-connect-server-kappa.vercel.app/startups?userEmail=${userEmail}`)
-            return result.data?.[0]
+            return result.data?.[0] || false
         },
         enabled: userEmail ? true : false
     })
@@ -62,7 +62,7 @@ const MyStartup = () => {
         "Series C",
         "Bootstrapped"
     ];
-    const [image, setImage] = useState()
+    const [image, setImage] = useState() //
     const [imageObj, setImageObj] = useState()
     const handleImage = (e) => {
         console.log('image function working')
@@ -95,10 +95,17 @@ const MyStartup = () => {
         }).then(result => {
             if (result.isConfirmed) {
                 toast.promise(
-                    axios.delete(`https://venture-connect-server-kappa.vercel.app/startups?userEmail=${userEmail}`),
+                    async () => {
+                        const { data: result } = await axios.delete(`https://venture-connect-server-kappa.vercel.app/startups?userEmail=${userEmail}`)
+                        if (result.deletedCount !== 1) {
+                            console.log(result)
+                            throw new Error("Delete failed")
+                        }
+                    },
                     {
                         loading: "Deleting",
                         success: async () => {
+                            setImage()
                             await refetch()
                             return "Deleted"
                         },
@@ -212,8 +219,8 @@ const MyStartup = () => {
     return (
         <div>
             <Toaster />
-
             <div className='p-9 '>
+
                 {isLoading && <div className='flex justify-center p-8'><span className="loading loading-spinner text-success"></span></div>}
                 <div className={`border max-w-2xl w-full p-7 rounded-md ${data || isLoading ? "hidden" : ""}`}>
                     <h1 className='text-white'>StartUp Profile</h1>

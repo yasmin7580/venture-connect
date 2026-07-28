@@ -220,7 +220,7 @@ const BrowseStartups = () => {
 
 
 
-                                <div className='flex flex-col sm:flex-row gap-4'>
+                                {/* <div className='flex flex-col sm:flex-row gap-4'>
 
 
 
@@ -301,6 +301,52 @@ const BrowseStartups = () => {
                                     </div>
 
 
+
+                                </div> */}
+                                <div className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#00142c] via-[#08263d] to-[#00142c] shadow-lg hover:shadow-cyan-500/20 transition-all duration-300">
+
+                                    {/* Startup Logo */}
+                                    <div className="flex justify-center md:justify-start">
+                                        <div className="relative overflow-hidden rounded-2xl border-2 border-[#00d3f2] w-full h-52 sm:w-36 sm:h-36 md:w-32 md:h-32 shrink-0">
+                                            <Image
+                                                src={startup.image}
+                                                alt="image"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex-1 flex flex-col justify-between min-w-0">
+
+                                        <div>
+                                            <h1 className="text-2xl font-bold text-white break-words">
+                                                {startup.name}
+                                            </h1>
+
+                                            <div className="flex flex-wrap gap-3 mt-4">
+
+                                                <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-[#00d3f2]/15 border border-[#00d3f2]/30 text-[#00d3f2]">
+                                                    {startup.industry}
+                                                </span>
+
+                                                <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-[#ff7904]/15 border border-[#ff7904]/30 text-[#ff7904]">
+                                                    {startup.fundingStage}
+                                                </span>
+
+                                            </div>
+
+                                            <p className="text-gray-400 text-sm mt-4 break-all">
+                                                {startup.userEmail}
+                                            </p>
+
+                                            <p className="text-gray-300 mt-4 leading-7 line-clamp-3">
+                                                {startup.description}
+                                            </p>
+                                        </div>
+
+                                    </div>
 
                                 </div>
 

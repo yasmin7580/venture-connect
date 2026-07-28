@@ -141,6 +141,7 @@ const PostTeamRequirements = () => {
             }
 
         )
+        e.target.reset()
 
     }
 
@@ -212,7 +213,7 @@ const PostTeamRequirements = () => {
 
                                     onSubmit={handlePostOpportunity}
 
-                                    className={`[&_input]:bg-white/10 [&_select]:bg-white/10 ${!isStartup ? "hidden" : ""}`}
+                                    className={`[&_input]:bg-white/10 [&_select]:bg-[#001228] ${!isStartup ? "hidden" : ""}`}
 
                                 >
 
@@ -234,7 +235,7 @@ const PostTeamRequirements = () => {
 
                                             name="title"
 
-                                            className="input border text-gray-500 w-full"
+                                            className="input border text-white w-full"
 
                                             placeholder="Role Title"
 
@@ -245,14 +246,14 @@ const PostTeamRequirements = () => {
 
 
 
-                                        <div className="flex flex-col sm:flex-row gap-3">
+                                        <div className="flex flex-col sm:flex-row gap-3 ">
 
 
 
                                             <div className="w-full">
 
 
-                                                <label className="label text-white">
+                                                <label className="label text-white mb-1">
                                                     Work type
                                                 </label>
 
@@ -260,7 +261,7 @@ const PostTeamRequirements = () => {
 
                                                 <select
 
-                                                    className="select border text-gray-500 w-full"
+                                                    className="select border   text-white w-full justify-center"
 
                                                     name="workType"
 
@@ -268,7 +269,7 @@ const PostTeamRequirements = () => {
 
                                                 >
 
-                                                    <option value={""} disabled>
+                                                    <option  value={""} disabled>
                                                         Work Type
                                                     </option>
 
@@ -300,7 +301,7 @@ const PostTeamRequirements = () => {
                                             <div className="w-full">
 
 
-                                                <label className="label text-white">
+                                                <label className="label text-white mb-1">
                                                     Commitment Level
                                                 </label>
 
@@ -308,7 +309,7 @@ const PostTeamRequirements = () => {
 
                                                 <select
 
-                                                    className="select border text-gray-500 w-full"
+                                                    className="select border  text-white w-full justify-center"
 
                                                     name="commitmentLevel"
 
@@ -316,7 +317,7 @@ const PostTeamRequirements = () => {
 
                                                 >
 
-                                                    <option value={""} disabled>
+                                                    <option   value={""} disabled>
                                                         Commitment Level
                                                     </option>
 
@@ -326,7 +327,7 @@ const PostTeamRequirements = () => {
 
                                                         commitmentLevels.map((commitment, index) =>
 
-                                                            <option key={index}>
+                                                            <option  key={index}>
                                                                 {commitment}
                                                             </option>
 
@@ -363,7 +364,7 @@ const PostTeamRequirements = () => {
 
                                             type="text"
 
-                                            className="input border text-gray-500 w-full"
+                                            className="input border text-white w-full"
 
                                             placeholder="Require Skills"
 
@@ -387,7 +388,7 @@ const PostTeamRequirements = () => {
 
                                             type="date"
 
-                                            className="input border text-gray-500 w-full"
+                                            className="input border text-white w-full"
 
                                             name="applicationDeadline"
 
@@ -402,7 +403,7 @@ const PostTeamRequirements = () => {
 
                                             disabled={user?.opportunity === 0 && user.plan === "free"}
 
-                                            className="btn btn-neutral mt-4 w-full sm:w-auto"
+                                            className="btn background border-none mt-4 w-full sm:w-auto"
 
                                         >
 
